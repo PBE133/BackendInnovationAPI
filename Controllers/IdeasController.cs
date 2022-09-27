@@ -1,7 +1,10 @@
 ﻿using BackendInnovationAPI.Models;
 using BackendInnovationAPI.Services;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Security.Cryptography.X509Certificates;
 
 namespace BackendInnovationAPI.Controllers
 {
@@ -19,18 +22,19 @@ namespace BackendInnovationAPI.Controllers
         }
         // GET: api/<IdeasController>/Ideascollections
         [HttpGet]
-        public ActionResult<List<Idea>> Get()
+        public  async Task<ActionResult<Idea>> Get()
         {
-             return _ideaServices.GetIdeaCollections();
+          var ideas = await _ideaServices.GetIdeaCollections();
+            return Ok(ideas);
             
         }
 
 
         // PUT api/<IdeasController>/5
         [HttpGet("{id}")]
-        public ActionResult Get(string id)
+        public async Task<ActionResult<Idea>> Get(string id)
         {
-            var existingIdea = _ideaServices.GetIdea(id);
+            var existingIdea = await _ideaServices.GetIdea(id);
 
             if (existingIdea == null)
             {
@@ -42,9 +46,9 @@ namespace BackendInnovationAPI.Controllers
 
         //api/<IdeasController>/
         [HttpPost]
-        public ActionResult<Idea> Post([FromBody] Idea idea)
+        public async Task< ActionResult<Idea>> Post([FromBody] Idea idea)
         {
-            _ideaServices.CreateIdeaCollection(idea);
+           await _ideaServices.CreateIdeaCollection(idea);
 
             return CreatedAtAction(nameof(Get), new { id = idea.Id }, idea);
 
@@ -52,22 +56,22 @@ namespace BackendInnovationAPI.Controllers
 
         // PUT api/<IdeasController>/5
         [HttpPut("{id}")]
-        public ActionResult Put(string id, [FromBody] Idea idea)
+        public async Task< ActionResult<Idea>>Put(string id, [FromBody] Idea idea)
         {
-            var existingIdea = _ideaServices.GetIdea(id);
+            var existingIdea = await _ideaServices.GetIdea(id);
 
             if (existingIdea == null)
             {
                 return NotFound($"Idea with Id = {id} not found");
             }
 
-            _ideaServices.Update(id, idea);
+           await _ideaServices.Update(id, idea);
 
             //return NoContent();
             return Ok($"Idea with Id = {id} Updated");
 
 
-
+        }
 
             /*  // DELETE api/<IdeasController>/5
                       [HttpDelete("{id}")]
@@ -86,7 +90,9 @@ namespace BackendInnovationAPI.Controllers
           }*/
 
 
-        }
+            // Patch method
+          
+
 
     }
 }

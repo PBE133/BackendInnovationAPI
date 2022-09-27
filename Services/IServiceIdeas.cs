@@ -1,17 +1,21 @@
 ﻿using BackendInnovationAPI.Models;
+using Microsoft.AspNetCore.JsonPatch;
+using MongoDB.Driver;
 
 namespace BackendInnovationAPI.Services
 {
     public interface IServiceIdeas
     {
-        List<Idea> GetIdeaCollections();
+        Task<IEnumerable<Idea>> GetIdeaCollections();
 
-        Idea GetIdea(string id);
+        Task<Idea> GetIdea(string id);
 
-        Idea CreateIdeaCollection(Idea idea);
+        Task<Idea> CreateIdeaCollection(Idea idea);
+        Task<Idea> Update(string id, Idea idea);
 
-        void Update(string id, Idea idea);
 
-        void FetchOnlyIdeas();
+       // List<Idea> UpdateEmployeePatchAsync(string id, JsonPatchDocument ideaPatch);
+
+
     }
 }

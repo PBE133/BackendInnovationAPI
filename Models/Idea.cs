@@ -17,10 +17,10 @@ namespace BackendInnovationAPI.Models
         [BsonElement("description")]
         public string? Description { get; set; }
 
-        [BsonDateTimeOptions(Kind = DateTimeKind.Local)]
+        [BsonDateTimeOptions(Kind = DateTimeKind.Unspecified)]
         public DateTime CreatedAt { get; set; }
 
-        [BsonDateTimeOptions(Kind = DateTimeKind.Local)]
+        [BsonDateTimeOptions(Kind = DateTimeKind.Unspecified)]
         public DateTime UpdatedAt { get; set; }
         public string Portfolio_id { get; set; }
         public Ideator IdeatorId { get; set; }
