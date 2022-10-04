@@ -10,19 +10,23 @@ namespace BackendInnovationAPI.Models
         [BsonRepresentation(BsonType.ObjectId)]
 
         [BsonElement("ideatorId")]
-        public string Id { get; set; }
+        public string IdeatorId { get; set; }
 
-        public string? Name { get; set; }
+        [BsonElement("ideatorName")]
+        public string? IdeatorName { get; set; }
 
-        [BsonElement("address")]
-        public string? Address { get; set; }
+        [BsonElement("muid")] 
+        public string? MUId { get; set; }
 
         [BsonElement("company")]
         public string? Company { get; set; }
 
+        [BsonElement("officeAddress")]
+        public string? OfficeAddress { get; set; }
+
         public Ideator()
         {
-            Id = ObjectId.GenerateNewId().ToString();
+            IdeatorId = ObjectId.GenerateNewId().ToString();
         }
     }
 }

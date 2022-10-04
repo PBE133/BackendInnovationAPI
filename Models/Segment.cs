@@ -1,6 +1,7 @@
 ﻿
 using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson;
+using BackendInnovationAPI.DTO;
 
 namespace BackendInnovationAPI.Models
 {
@@ -10,14 +11,16 @@ namespace BackendInnovationAPI.Models
       //  [JsonIgnore]
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }
+        public string SegmentId { get; set; }
 
-        public string? Name { get; set; }
-        public double Value { get; set; }
+        [BsonElement("segmentName")]
+        public List<string> SegmentName { get; set; }
+
+      //  public double Value { get; set; }
 
         public Segment()
         {
-            Id = ObjectId.GenerateNewId().ToString();
+            SegmentId = ObjectId.GenerateNewId().ToString();
         }
 
     }

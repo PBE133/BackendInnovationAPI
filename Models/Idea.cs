@@ -9,26 +9,40 @@ namespace BackendInnovationAPI.Models
        
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }
+        public string IdeaId { get; set; }
 
-        [BsonElement("name")]
-        public string? Name { get; set; }
+        [BsonElement("ideaName")]
+        public string? IdeaName { get; set; }
 
         [BsonElement("description")]
         public string? Description { get; set; }
 
-        [BsonDateTimeOptions(Kind = DateTimeKind.Unspecified)]
-        public DateTime CreatedAt { get; set; }
+        [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
+        public DateTime CreatedAt { get; set; } 
 
-        [BsonDateTimeOptions(Kind = DateTimeKind.Unspecified)]
-        public DateTime UpdatedAt { get; set; }
-        public string Portfolio_id { get; set; }
-        public Ideator IdeatorId { get; set; }
-        public Segment SegmentId { get; set; }
+        [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
+        public DateTime UpdatedAt { get; set; } 
+
+        [BsonElement("Ideator")]
+        public Ideator Ideator { get; set; }
+
+        [BsonElement("Segment")]
+        public Segment Segments { get; set; }
+
+        //public List<string> FeedbackId { get; set; }
+        public List<Feedback> Feedbacks { get; set; }
+
+        /*
+      [BsonElement("Portfolio")]
+      public Portfolio Portfolio { get; set; }
+
+      [BsonElement("Score")]
+      public Score Score { get; set; }
+      */
 
         public Idea()
         {
-            Id = ObjectId.GenerateNewId().ToString();
+            IdeaId = ObjectId.GenerateNewId().ToString();
         }
     }
 }

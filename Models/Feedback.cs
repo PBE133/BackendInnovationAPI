@@ -1,5 +1,6 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson;
+using BackendInnovationAPI.DTO;
 
 namespace BackendInnovationAPI.Models
 {
@@ -8,26 +9,25 @@ namespace BackendInnovationAPI.Models
 
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string Id { get; set; }
+        public string FeedbackId { get; set; }
 
-        [BsonElement("name")]
+        [BsonElement("feedbackName")]
         public string? Value { get; set; }
 
 
-        [BsonDateTimeOptions(Kind = DateTimeKind.Unspecified)]
+        [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
         public DateTime CreatedAt { get; set; }
 
-        [BsonDateTimeOptions(Kind = DateTimeKind.Unspecified)]
-        public DateTime UpdatedAt { get; set; }
+        [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
+        public DateTime UpdatedAt { get; set; } 
 
-        public Segment SegmentId { get; set; }
-        public Idea IdeaId { get; set; }
+        public Segment Segments { get; set; }
+
 
 
         public Feedback()
         {
-            Id = ObjectId.GenerateNewId().ToString();
+            FeedbackId = ObjectId.GenerateNewId().ToString();
         }
-
     }
 }

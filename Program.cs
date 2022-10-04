@@ -1,7 +1,10 @@
 using BackendInnovationAPI.DatabaseSettings;
-using BackendInnovationAPI.Services;
+using BackendInnovationAPI.Services.IdeaServices;
 using Microsoft.Extensions.Options;
 using MongoDB.Driver;
+using System.Data.Common;
+using System.Data;
+using BackendInnovationAPI.Services.FeedbackServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,11 +19,8 @@ builder.Services.AddSingleton<IMongoClient>(s =>
         new MongoClient(builder.Configuration.GetValue<string>("DatabaseSettings:ConnectionStrings")));
 
 builder.Services.AddScoped<IServiceIdeas, ServiceIdeas>();
+builder.Services.AddScoped<IFeedbackServices, FeedbackServices>();
 
-builder.Services.AddControllers(options =>
-{
-    options.InputFormatters.Insert(0, MyJPIF.GetJsonPatchInputFormatter());
-});
 
 // Add services to the container.
 

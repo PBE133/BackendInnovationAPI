@@ -1,5 +1,6 @@
-﻿using BackendInnovationAPI.Models;
-using BackendInnovationAPI.Services;
+﻿using BackendInnovationAPI.DTO;
+using BackendInnovationAPI.Models;
+using BackendInnovationAPI.Services.IdeaServices;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
@@ -20,43 +21,49 @@ namespace BackendInnovationAPI.Controllers
         {
                 this._ideaServices = ideaServices;  
         }
-        // GET: api/<IdeasController>/Ideascollections
+
+
+        //// GET: api/<IdeasController>/Ideascollections
         [HttpGet]
-        public  async Task<ActionResult<Idea>> Get()
+        public async Task<ActionResult<Idea>> Get()
         {
-          var ideas = await _ideaServices.GetIdeaCollections();
+            var ideas = await _ideaServices.GetIdeaCollections();
             return Ok(ideas);
-            
+
         }
 
 
-        // PUT api/<IdeasController>/5
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Idea>> Get(string id)
-        {
-            var existingIdea = await _ideaServices.GetIdea(id);
 
-            if (existingIdea == null)
-            {
-                return NotFound($"Idea with Id = {id} not found");
-            }
+        // Get api/<IdeasController>/5
+        //[HttpGet("{id}")]
+        //public async Task<ActionResult<Idea>> Get(string id)
+        //{
+        //    var existingIdea = await _ideaServices.GetIdea(id);
 
-          return Ok(existingIdea);
-        }
+        //    if (existingIdea == null)
+        //    {
+        //        return NotFound($"Idea with Id = {id} not found");
+        //    }
+
+        //  return Ok(existingIdea);
+        //}
+
 
         //api/<IdeasController>/
         [HttpPost]
+       
         public async Task< ActionResult<Idea>> Post([FromBody] Idea idea)
         {
            await _ideaServices.CreateIdeaCollection(idea);
 
-            return CreatedAtAction(nameof(Get), new { id = idea.Id }, idea);
+            return CreatedAtAction(nameof(Get), new { id = idea.IdeaId }, idea);
 
         }
 
         // PUT api/<IdeasController>/5
         [HttpPut("{id}")]
-        public async Task< ActionResult<Idea>>Put(string id, [FromBody] Idea idea)
+      
+        public async Task<ActionResult<Idea>> Put(string id, [FromBody] Idea idea)
         {
             var existingIdea = await _ideaServices.GetIdea(id);
 
@@ -65,7 +72,7 @@ namespace BackendInnovationAPI.Controllers
                 return NotFound($"Idea with Id = {id} not found");
             }
 
-           await _ideaServices.Update(id, idea);
+            await _ideaServices.Update(id, idea);
 
             //return NoContent();
             return Ok($"Idea with Id = {id} Updated");
@@ -73,25 +80,72 @@ namespace BackendInnovationAPI.Controllers
 
         }
 
-            /*  // DELETE api/<IdeasController>/5
-                      [HttpDelete("{id}")]
-                      public ActionResult Delete(string id)
+
+       // Get api/<IdeasController>/5
+        [HttpGet("{MUId}")]
+        public async Task<ActionResult<Idea>> Get(string MUId)
+        {
+            var existingIdea = await _ideaServices.GetIdeasByIdeatorMUID(MUId);
+
+            if (existingIdea == null)
+            {
+                return NotFound($"Idea with Id = {MUId} not found");
+            }
+
+            return Ok(existingIdea);
+        }
+
+        [HttpGet("DisplayOnlyIdea")]
+        public async Task< ActionResult<Idea>> GetMapped()
+        {
+            var ideas = await _ideaServices.FetchAndMapIdeas();
+            return Ok(ideas);
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /*  // DELETE api/<IdeasController>/5
+                  [HttpDelete("{id}")]
+                  public ActionResult Delete(string id)
+                  {
+                      var idea = _ideaServices.GetIdea(id);
+
+                      if (student == null)
                       {
-                          var idea = _ideaServices.GetIdea(id);
+                          return NotFound($"idea with Id = {id} not found");
+                      }
 
-                          if (student == null)
-                          {
-                              return NotFound($"idea with Id = {id} not found");
-                          }
+                      _ideaServices.Remove(student.Id);
 
-                          _ideaServices.Remove(student.Id);
-
-                          return Ok($"Idea with Id = {id} deleted");
-          }*/
+                      return Ok($"Idea with Id = {id} deleted");
+      }*/
 
 
-            // Patch method
-          
+        // Patch method
+
 
 
     }
