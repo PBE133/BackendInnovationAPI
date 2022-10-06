@@ -1,5 +1,6 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson;
+using System.ComponentModel.DataAnnotations;
 
 namespace BackendInnovationAPI.Models
 {
@@ -9,6 +10,8 @@ namespace BackendInnovationAPI.Models
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string ScoreId { get; set; }
+
+        [Range(1, 100, ErrorMessage = "Price must be between $1 and $100")]
 
         public double Scale { get; set; }
 

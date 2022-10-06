@@ -30,4 +30,5 @@ namespace BackendInnovationAPI.DTO
 
         public List<string> FeedbackIds { get; set; }
     }
+    
 }

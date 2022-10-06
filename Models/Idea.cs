@@ -1,6 +1,7 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson;
 using System.Text.Json.Serialization;
+using System.ComponentModel.DataAnnotations;
 
 namespace BackendInnovationAPI.Models
 {
@@ -12,9 +13,12 @@ namespace BackendInnovationAPI.Models
         public string IdeaId { get; set; }
 
         [BsonElement("ideaName")]
-        public string? IdeaName { get; set; }
+        [Required(ErrorMessage = "Idea Name is required")]
+        public string IdeaName { get; set; }
 
         [BsonElement("description")]
+        [StringLength(200, MinimumLength = 80, ErrorMessage = "This field must be more than  80 characters")]
+        [Required]
         public string? Description { get; set; }
 
         [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]

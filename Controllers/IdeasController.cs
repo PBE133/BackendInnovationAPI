@@ -27,9 +27,9 @@ namespace BackendInnovationAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<Idea>> Get()
         {
-            var ideas = await _ideaServices.GetIdeaCollections();
-            return Ok(ideas);
-
+         var ideas = await _ideaServices.GetIdeaCollections();
+         return Ok(ideas);
+ 
         }
 
 
@@ -54,10 +54,20 @@ namespace BackendInnovationAPI.Controllers
        
         public async Task< ActionResult<Idea>> Post([FromBody] Idea idea)
         {
-           await _ideaServices.CreateIdeaCollection(idea);
+            if (idea == null)
+            {
+                return BadRequest();
+            }
 
-            return CreatedAtAction(nameof(Get), new { id = idea.IdeaId }, idea);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+         await _ideaServices.CreateIdeaCollection(idea);
 
+         return CreatedAtAction(nameof(Get), new { id = idea.IdeaId }, idea);
+
+            
         }
 
         // PUT api/<IdeasController>/5
@@ -65,18 +75,21 @@ namespace BackendInnovationAPI.Controllers
       
         public async Task<ActionResult<Idea>> Put(string id, [FromBody] Idea idea)
         {
-            var existingIdea = await _ideaServices.GetIdea(id);
 
-            if (existingIdea == null)
+            if (!ModelState.IsValid)
             {
-                return NotFound($"Idea with Id = {id} not found");
+                   return BadRequest(ModelState);
             }
 
-            await _ideaServices.Update(id, idea);
+         var existingIdea = await _ideaServices.GetIdea(id);
+         await _ideaServices.Update(id, idea);
 
-            //return NoContent();
-            return Ok($"Idea with Id = {id} Updated");
-
+                    //return NoContent();
+                    return Ok($"Idea with Id = {id} Updated");
+            if (existingIdea == null)
+            {
+              return NotFound($"Idea with Id = {id} not found");
+            }
 
         }
 
@@ -85,46 +98,29 @@ namespace BackendInnovationAPI.Controllers
         [HttpGet("{MUId}")]
         public async Task<ActionResult<Idea>> Get(string MUId)
         {
-            var existingIdea = await _ideaServices.GetIdeasByIdeatorMUID(MUId);
+
+            if (!ModelState.IsValid)
+            {
+               return BadRequest(ModelState);
+            }
+         var existingIdea = await _ideaServices.GetIdeasByIdeatorMUID(MUId);
 
             if (existingIdea == null)
             {
                 return NotFound($"Idea with Id = {MUId} not found");
             }
 
-            return Ok(existingIdea);
+        return Ok(existingIdea);
         }
-
+           
         [HttpGet("DisplayOnlyIdea")]
         public async Task< ActionResult<Idea>> GetMapped()
         {
-            var ideas = await _ideaServices.FetchAndMapIdeas();
-            return Ok(ideas);
-
+         
+                var ideas = await _ideaServices.FetchAndMapIdeas();
+                return Ok(ideas);
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+          
 
 
         /*  // DELETE api/<IdeasController>/5

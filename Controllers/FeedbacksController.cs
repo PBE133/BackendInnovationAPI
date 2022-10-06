@@ -2,6 +2,7 @@
 using BackendInnovationAPI.Services.FeedbackServices;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Org.BouncyCastle.Crypto;
 
 namespace BackendInnovationAPI.Controllers
 {
@@ -28,9 +29,19 @@ namespace BackendInnovationAPI.Controllers
       
         public async Task<ActionResult<Feedback>> Post([FromBody] Feedback feedback)
         {
-          await _feedbackServices.CreateFeedbacks(feedback);
-            return CreatedAtAction(nameof(Get), new { id = feedback.FeedbackId }, feedback);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
+            if (feedback == null)
+                {
+                    return BadRequest();
+                }   
+            
+         await _feedbackServices.CreateFeedbacks(feedback);
+         return CreatedAtAction(nameof(Get), new { id = feedback.FeedbackId }, feedback);
+                            
         }
         
           // get feedback by idea id
@@ -38,14 +49,14 @@ namespace BackendInnovationAPI.Controllers
         [HttpGet("{id}")]
         public async Task< ActionResult<Feedback>> Get(string id)
         {
-           var existingIdea =  await _feedbackServices.GetFeedbackById(id);
+          var existingIdea = await _feedbackServices.GetFeedbackById(id);
 
-           if (existingIdea == null)
-           {
-               return NotFound($"Idea with Id = {id} not found");
-           }
+                if (existingIdea == null)
+                {
+                    return NotFound($"Idea with Id = {id} not found");
+                }
 
-         return Ok(existingIdea);
+                return Ok(existingIdea);       
         }
 
 
@@ -55,17 +66,22 @@ namespace BackendInnovationAPI.Controllers
 
         public async Task<ActionResult<Feedback>> Put(string id, [FromBody] Feedback feedback)
         {
-            var existingIdea = await _feedbackServices.GetFeedbackById(id);
+
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+        var existingIdea = await _feedbackServices.GetFeedbackById(id);
 
             if (existingIdea == null)
             {
                 return NotFound($"Idea with Id = {id} not found");
             }
 
-            await _feedbackServices.Update(id, feedback);
+         await _feedbackServices.Update(id, feedback);
 
-            //return NoContent();
-            return Ok($"Idea with Id = {id} Updated");
+         //return NoContent();
+         return Ok($"Idea with Id = {id} Updated");
 
 
         }
