@@ -1,11 +1,6 @@
-﻿using BackendInnovationAPI.DTO;
-using BackendInnovationAPI.Models;
+﻿using BackendInnovationAPI.Models;
 using BackendInnovationAPI.Services.IdeaServices;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Security.Cryptography.X509Certificates;
 
 namespace BackendInnovationAPI.Controllers
 {

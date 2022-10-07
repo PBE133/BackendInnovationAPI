@@ -24,19 +24,17 @@ namespace BackendInnovationAPI.Services.IdeaServices
             _ideas = database.GetCollection<Idea>("Ideas");
 
         }
-
-
-
         // Get all ideas collections
         public async Task<IEnumerable<Idea>> GetIdeaCollections()
         {
-            return await _ideas.Find(_ => true).ToListAsync();
+           return await _ideas.Find(_ => true).ToListAsync();
 
             /*
             var ideasCollection = await _ideas.Find(_ => true).ToListAsync();
 
             var myidea = ideasCollection.Select(_ => new FeedbackIdDTO()
             {
+                foreach (var idea in ideasCollection)
                 IdeaId = _.IdeaId,
                 IdeaName = _.IdeaName,
                 Description = _.Description,
@@ -44,10 +42,11 @@ namespace BackendInnovationAPI.Services.IdeaServices
                 UpdatedAt = _.UpdatedAt,
                 Ideator = _.Ideator,
                 Segments = _.Segments,
-                FeedbackIds = new List<string>().ToList()
+                FeedbackIds = _.Feedbacks.Select(x => x.FeedbackId).ToList()
                 
             });
-            return (IEnumerable<Idea>)myidea;
+            return (IEnumerable<FeedbackByIdeaId>)myidea;
+
             */
 
         }

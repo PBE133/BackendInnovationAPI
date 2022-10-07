@@ -10,23 +10,21 @@ namespace BackendInnovationAPI.Models
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
 
-        [BsonElement("ideatorId")]
+        [BsonElement("ideatorId")]       
+        [Required(ErrorMessage = "Ideator Id is required. You must be logged in")]
         public string? IdeatorId { get; set; }
 
         [BsonElement("ideatorName")]
-        [Required(ErrorMessage = "Ideator Name is required")]
-        public string IdeatorName { get; set; }
+       public string IdeatorName { get; set; }
 
         [BsonElement("muid")]
-        [StringLength(6, MinimumLength = 6, ErrorMessage = "This field must be 6 characters")]
-        [RegularExpression("^(?=.*[A-Z])(?=.*[0-9])[A-Z0-9]*$")]
-        [Required]
         public string? MUId { get; set; }
 
         [BsonElement("company")]
-        public string? Company { get; set; }
+        public string Company { get; set; }
 
         [BsonElement("officeAddress")]
+        [Required(ErrorMessage = "Ideator Location is required")]
         public string? OfficeAddress { get; set; }
 
         public Ideator()

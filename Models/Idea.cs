@@ -17,7 +17,7 @@ namespace BackendInnovationAPI.Models
         public string IdeaName { get; set; }
 
         [BsonElement("description")]
-        [StringLength(200, MinimumLength = 80, ErrorMessage = "This field must be more than  80 characters")]
+        [StringLength(512, MinimumLength = 80, ErrorMessage = "This field must be more than  80 characters")]
         [Required]
         public string? Description { get; set; }
 

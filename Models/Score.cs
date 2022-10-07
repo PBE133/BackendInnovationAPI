@@ -11,11 +11,10 @@ namespace BackendInnovationAPI.Models
         [BsonRepresentation(BsonType.ObjectId)]
         public string ScoreId { get; set; }
 
-        [Range(1, 100, ErrorMessage = "Price must be between $1 and $100")]
-
+        [Range(1, 100, ErrorMessage = "Scale must be between 1 and 100")]
         public double Scale { get; set; }
 
-        public double Cost { get; set; }
+        public double? Cost { get; set; }
 
         public Score()
         {

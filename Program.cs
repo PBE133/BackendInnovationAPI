@@ -5,6 +5,7 @@ using MongoDB.Driver;
 using System.Data.Common;
 using System.Data;
 using BackendInnovationAPI.Services.FeedbackServices;
+using BackendInnovationAPI.Services.PortfolioServices;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +21,7 @@ builder.Services.AddSingleton<IMongoClient>(s =>
 
 builder.Services.AddScoped<IServiceIdeas, ServiceIdeas>();
 builder.Services.AddScoped<IFeedbackServices, FeedbackServices>();
+builder.Services.AddScoped<IPortfolioService, PortfolioService>();
 
 
 // Add services to the container.
