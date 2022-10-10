@@ -7,9 +7,9 @@ namespace BackendInnovationAPI.Services.IdeaServices
 {
     public interface IServiceIdeas
     {
-        Task<IEnumerable<Idea>> GetIdeaCollections();
+        //Task<IEnumerable<Idea>> GetIdeaCollections();
 
-        //Task<IEnumerable<FeedbackIdDTO>> GetIdeaCollections();
+        Task<IEnumerable<ObjectListIdeaDTO>> GetIdeaCollections();
 
         Task<Idea> GetIdea(string id);
 

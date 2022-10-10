@@ -7,7 +7,7 @@ namespace BackendInnovationAPI.Models
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)] 
-        public string PortfolioId { get; set; }
+        public string PortfolioId { get; set; } 
 
         [BsonElement("portfolioName")]
         public string? PortfolioName { get; set; }

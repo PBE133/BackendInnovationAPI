@@ -4,7 +4,7 @@ using MongoDB.Bson;
 
 namespace BackendInnovationAPI.DTO
 {
-    public class FeedbackIdDTO
+    public class ObjectListIdeaDTO
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
@@ -29,6 +29,7 @@ namespace BackendInnovationAPI.DTO
         public Segment Segments { get; set; }
 
         public List<string> FeedbackIds { get; set; }
+      
     }
     
 }

@@ -36,10 +36,10 @@ namespace BackendInnovationAPI.Models
         //public List<string> FeedbackId { get; set; }
         public List<Feedback> Feedbacks { get; set; }
 
-        /*
+        
       [BsonElement("Portfolio")]
       public Portfolio Portfolio { get; set; }
-
+        /*
       [BsonElement("Score")]
       public Score Score { get; set; }
       */

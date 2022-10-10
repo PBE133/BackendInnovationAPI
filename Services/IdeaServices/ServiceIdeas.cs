@@ -25,16 +25,15 @@ namespace BackendInnovationAPI.Services.IdeaServices
 
         }
         // Get all ideas collections
-        public async Task<IEnumerable<Idea>> GetIdeaCollections()
+        public async Task<IEnumerable<ObjectListIdeaDTO>> GetIdeaCollections()
         {
-           return await _ideas.Find(_ => true).ToListAsync();
+           //return await _ideas.Find(_ => true).ToListAsync();
 
-            /*
+            
             var ideasCollection = await _ideas.Find(_ => true).ToListAsync();
 
-            var myidea = ideasCollection.Select(_ => new FeedbackIdDTO()
+            var myidea = ideasCollection.Select(_ => new ObjectListIdeaDTO()
             {
-                foreach (var idea in ideasCollection)
                 IdeaId = _.IdeaId,
                 IdeaName = _.IdeaName,
                 Description = _.Description,
@@ -42,12 +41,12 @@ namespace BackendInnovationAPI.Services.IdeaServices
                 UpdatedAt = _.UpdatedAt,
                 Ideator = _.Ideator,
                 Segments = _.Segments,
-                FeedbackIds = _.Feedbacks.Select(x => x.FeedbackId).ToList()
+                FeedbackIds = _.Feedbacks.Select(x => x.FeedbackId).ToList()             
                 
             });
-            return (IEnumerable<FeedbackByIdeaId>)myidea;
+            return myidea;
 
-            */
+            
 
         }
        
