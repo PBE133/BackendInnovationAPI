@@ -18,7 +18,7 @@
           }
         }
       },
-      "Microsoft.AspNetCore.JsonPatch/6.0.9": {
+      "Microsoft.AspNetCore.JsonPatch/6.0.10": {
         "type": "package",
         "dependencies": {
           "Microsoft.CSharp": "4.7.0",
@@ -35,10 +35,10 @@
           }
         }
       },
-      "Microsoft.AspNetCore.Mvc.NewtonsoftJson/6.0.9": {
+      "Microsoft.AspNetCore.Mvc.NewtonsoftJson/6.0.10": {
         "type": "package",
         "dependencies": {
-          "Microsoft.AspNetCore.JsonPatch": "6.0.9",
+          "Microsoft.AspNetCore.JsonPatch": "6.0.10",
           "Newtonsoft.Json": "13.0.1",
           "Newtonsoft.Json.Bson": "1.0.2"
         },
@@ -741,6 +741,19 @@
             "related": ".xml"
           }
         }
+      },
+      "YamlDotNet/12.0.2": {
+        "type": "package",
+        "compile": {
+          "lib/net6.0/YamlDotNet.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net6.0/YamlDotNet.dll": {
+            "related": ".xml"
+          }
+        }
       }
     }
   },
@@ -769,10 +782,10 @@
         "lib/netstandard2.1/DnsClient.xml"
       ]
     },
-    "Microsoft.AspNetCore.JsonPatch/6.0.9": {
-      "sha512": "1d31TnoW0na1vYI0qE/vbrB534CWKo70o3ACGz0N0m/SchcZMKc0D/4WTyI0w0emxx63YiyYKWkkyO+EUbQfeg==",
+    "Microsoft.AspNetCore.JsonPatch/6.0.10": {
+      "sha512": "d/TRLC4nrlkMZChda9swuv1zKn33yXVxy5xz6CEaSPelpiLQXV5oCjN5zot6MF4TGDuf5N2px75j2rUghkkW6Q==",
       "type": "package",
-      "path": "microsoft.aspnetcore.jsonpatch/6.0.9",
+      "path": "microsoft.aspnetcore.jsonpatch/6.0.10",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -784,14 +797,14 @@
         "lib/net6.0/Microsoft.AspNetCore.JsonPatch.xml",
         "lib/netstandard2.0/Microsoft.AspNetCore.JsonPatch.dll",
         "lib/netstandard2.0/Microsoft.AspNetCore.JsonPatch.xml",
-        "microsoft.aspnetcore.jsonpatch.6.0.9.nupkg.sha512",
+        "microsoft.aspnetcore.jsonpatch.6.0.10.nupkg.sha512",
         "microsoft.aspnetcore.jsonpatch.nuspec"
       ]
     },
-    "Microsoft.AspNetCore.Mvc.NewtonsoftJson/6.0.9": {
-      "sha512": "8Fpz4d3sxuLSHqe4zby0c4br5kqmFCR7ki1utqvjZo9oK0G+pWqqhgB1f6efSLpseAWGK3xF1aK+7mfvhmcMtA==",
+    "Microsoft.AspNetCore.Mvc.NewtonsoftJson/6.0.10": {
+      "sha512": "ok09jxzJ57s63dQtzlMGPAo4w3pTR3zZoNp0bTT0J4rKJgoJz8uhBHzr6PeCnRNWAOu0nm0b1irg5LhSDwEOBQ==",
       "type": "package",
-      "path": "microsoft.aspnetcore.mvc.newtonsoftjson/6.0.9",
+      "path": "microsoft.aspnetcore.mvc.newtonsoftjson/6.0.10",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
@@ -799,7 +812,7 @@
         "THIRD-PARTY-NOTICES.TXT",
         "lib/net6.0/Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll",
         "lib/net6.0/Microsoft.AspNetCore.Mvc.NewtonsoftJson.xml",
-        "microsoft.aspnetcore.mvc.newtonsoftjson.6.0.9.nupkg.sha512",
+        "microsoft.aspnetcore.mvc.newtonsoftjson.6.0.10.nupkg.sha512",
         "microsoft.aspnetcore.mvc.newtonsoftjson.nuspec"
       ]
     },
@@ -2712,18 +2725,44 @@
         "system.threading.tasks.4.3.0.nupkg.sha512",
         "system.threading.tasks.nuspec"
       ]
+    },
+    "YamlDotNet/12.0.2": {
+      "sha512": "IFj2oDZYJIv5sM8mqaj5edVrpgUyoXk/wCGqZQJrgys/0tBajajpjRSgFM+iA/9ILOfTsPYKtcDcwvqBnBcNIg==",
+      "type": "package",
+      "path": "yamldotnet/12.0.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "LICENSE.txt",
+        "images/yamldotnet.png",
+        "lib/net35/YamlDotNet.dll",
+        "lib/net35/YamlDotNet.xml",
+        "lib/net45/YamlDotNet.dll",
+        "lib/net45/YamlDotNet.xml",
+        "lib/net47/YamlDotNet.dll",
+        "lib/net47/YamlDotNet.xml",
+        "lib/net6.0/YamlDotNet.dll",
+        "lib/net6.0/YamlDotNet.xml",
+        "lib/netstandard2.0/YamlDotNet.dll",
+        "lib/netstandard2.0/YamlDotNet.xml",
+        "lib/netstandard2.1/YamlDotNet.dll",
+        "lib/netstandard2.1/YamlDotNet.xml",
+        "yamldotnet.12.0.2.nupkg.sha512",
+        "yamldotnet.nuspec"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     "net6.0": [
-      "Microsoft.AspNetCore.JsonPatch >= 6.0.9",
-      "Microsoft.AspNetCore.Mvc.NewtonsoftJson >= 6.0.9",
+      "Microsoft.AspNetCore.JsonPatch >= 6.0.10",
+      "Microsoft.AspNetCore.Mvc.NewtonsoftJson >= 6.0.10",
       "MongoDB.Driver >= 2.17.1",
       "NPOI >= 2.5.6",
       "Newtonsoft.Json >= 13.0.1",
       "Swashbuckle.AspNetCore >= 6.4.0",
       "System.Linq >= 4.3.0",
-      "System.Threading.Tasks >= 4.3.0"
+      "System.Threading.Tasks >= 4.3.0",
+      "YamlDotNet >= 12.0.2"
     ]
   },
   "packageFolders": {
@@ -2773,11 +2812,11 @@
         "dependencies": {
           "Microsoft.AspNetCore.JsonPatch": {
             "target": "Package",
-            "version": "[6.0.9, )"
+            "version": "[6.0.10, )"
           },
           "Microsoft.AspNetCore.Mvc.NewtonsoftJson": {
             "target": "Package",
-            "version": "[6.0.9, )"
+            "version": "[6.0.10, )"
           },
           "MongoDB.Driver": {
             "target": "Package",
@@ -2802,6 +2841,10 @@
           "System.Threading.Tasks": {
             "target": "Package",
             "version": "[4.3.0, )"
+          },
+          "YamlDotNet": {
+            "target": "Package",
+            "version": "[12.0.2, )"
           }
         },
         "imports": [

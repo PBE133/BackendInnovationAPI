@@ -29,7 +29,10 @@ namespace BackendInnovationAPI.DTO
         public Segment Segments { get; set; }
 
         public List<string> FeedbackIds { get; set; }
-      
+
+        public string? PortfolioName { get; set; }
+     
+
     }
     
 }

@@ -20,6 +20,10 @@ namespace BackendInnovationAPI.Controllers
 
        
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<Portfolio>> Get()
         {
            var portfolioList = await _portfolioService.GetPortfolio(); 
@@ -27,7 +31,10 @@ namespace BackendInnovationAPI.Controllers
         }
 
         [HttpGet("{id}")]
-
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<Portfolio>> Get(string id)
         {
 
@@ -44,6 +51,10 @@ namespace BackendInnovationAPI.Controllers
         }
 
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<ActionResult<Portfolio>>Post(Portfolio portfolio)
         {
            await _portfolioService.PostPortfolio(portfolio);

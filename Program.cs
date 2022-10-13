@@ -6,6 +6,8 @@ using System.Data.Common;
 using System.Data;
 using BackendInnovationAPI.Services.FeedbackServices;
 using BackendInnovationAPI.Services.PortfolioServices;
+using Microsoft.OpenApi.Models;
+using NPOI.SS.Formula.Functions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -28,13 +30,31 @@ builder.Services.AddScoped<IPortfolioService, PortfolioService>();
 
 builder.Services.AddControllers()
   .AddNewtonsoftJson();
-
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Version = "v1",
+        Title = "IdeaRepo API",
+       
+    });
+});
+
+
 
 
 var app = builder.Build();
+
+app.UseSwagger();
+app.UseSwaggerUI(c =>
+{
+    c.DocumentTitle = "Idea repo API - Swagger docs";
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "IdeaRepo API v1");
+    c.EnableDeepLinking();
+    c.DefaultModelsExpandDepth(0);
+});
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

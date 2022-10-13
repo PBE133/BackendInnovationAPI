@@ -1,12 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "f8ls4X9joMbQ1WHsoeInvgiM74RrjgomiGhmmaJvi7wE5daylsBExNUz0+N9zgYaVctHThKM3oSnsa2EnMTMKg==",
+  "dgSpecHash": "zxjY7SflZbM9KXnjYvPuvfH49R6Nxf8kC1cz8qq3fSTEEOY6aFjH48vEm5T0O3ROWPnPJB3hxz47edLAfqwn/Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\PBE133\\source\\repos\\BackendInnovationAPI\\BackendInnovationAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\PBE133\\.nuget\\packages\\dnsclient\\1.6.1\\dnsclient.1.6.1.nupkg.sha512",
-    "C:\\Users\\PBE133\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\6.0.9\\microsoft.aspnetcore.jsonpatch.6.0.9.nupkg.sha512",
-    "C:\\Users\\PBE133\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\6.0.9\\microsoft.aspnetcore.mvc.newtonsoftjson.6.0.9.nupkg.sha512",
+    "C:\\Users\\PBE133\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\6.0.10\\microsoft.aspnetcore.jsonpatch.6.0.10.nupkg.sha512",
+    "C:\\Users\\PBE133\\.nuget\\packages\\microsoft.aspnetcore.mvc.newtonsoftjson\\6.0.10\\microsoft.aspnetcore.mvc.newtonsoftjson.6.0.10.nupkg.sha512",
     "C:\\Users\\PBE133\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\PBE133\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "C:\\Users\\PBE133\\.nuget\\packages\\microsoft.netcore.platforms\\5.0.0\\microsoft.netcore.platforms.5.0.0.nupkg.sha512",
@@ -47,7 +47,8 @@
     "C:\\Users\\PBE133\\.nuget\\packages\\system.security.permissions\\4.5.0\\system.security.permissions.4.5.0.nupkg.sha512",
     "C:\\Users\\PBE133\\.nuget\\packages\\system.security.principal.windows\\5.0.0\\system.security.principal.windows.5.0.0.nupkg.sha512",
     "C:\\Users\\PBE133\\.nuget\\packages\\system.text.encoding\\4.3.0\\system.text.encoding.4.3.0.nupkg.sha512",
-    "C:\\Users\\PBE133\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512"
+    "C:\\Users\\PBE133\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512",
+    "C:\\Users\\PBE133\\.nuget\\packages\\yamldotnet\\12.0.2\\yamldotnet.12.0.2.nupkg.sha512"
   ],
   "logs": []
 }

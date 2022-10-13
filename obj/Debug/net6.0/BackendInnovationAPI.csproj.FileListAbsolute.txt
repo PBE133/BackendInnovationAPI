@@ -60,3 +60,4 @@ C:\Users\PBE133\source\repos\BackendInnovationAPI\obj\Debug\net6.0\refint\Backen
 C:\Users\PBE133\source\repos\BackendInnovationAPI\obj\Debug\net6.0\BackendInnovationAPI.pdb
 C:\Users\PBE133\source\repos\BackendInnovationAPI\obj\Debug\net6.0\BackendInnovationAPI.genruntimeconfig.cache
 C:\Users\PBE133\source\repos\BackendInnovationAPI\obj\Debug\net6.0\ref\BackendInnovationAPI.dll
+C:\Users\PBE133\source\repos\BackendInnovationAPI\bin\Debug\net6.0\YamlDotNet.dll

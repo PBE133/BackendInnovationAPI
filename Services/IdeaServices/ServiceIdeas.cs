@@ -8,6 +8,7 @@ using MongoDB.Driver.Linq;
 using NPOI.SS.Formula.Functions;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Xml.Linq;
 using static NPOI.HSSF.UserModel.HeaderFooter;
 
@@ -16,12 +17,14 @@ namespace BackendInnovationAPI.Services.IdeaServices
     public class ServiceIdeas : IServiceIdeas
     {
         private readonly IMongoCollection<Idea> _ideas;
+       
 
         public ServiceIdeas(IDatabaseSettings settings, IMongoClient mongoClient)
         {
             var database = mongoClient.GetDatabase(settings.DatabaseName);
 
             _ideas = database.GetCollection<Idea>("Ideas");
+           
 
         }
         // Get all ideas collections
@@ -41,8 +44,8 @@ namespace BackendInnovationAPI.Services.IdeaServices
                 UpdatedAt = _.UpdatedAt,
                 Ideator = _.Ideator,
                 Segments = _.Segments,
-                FeedbackIds = _.Feedbacks.Select(x => x.FeedbackId).ToList()             
-                
+                FeedbackIds = _.Feedbacks.Select(x => x.FeedbackId).ToList(),
+                PortfolioName =_.Portfolio?.PortfolioName
             });
             return myidea;
 

@@ -20,6 +20,10 @@ namespace BackendInnovationAPI.Controllers
 
         //// GET: api/<IdeasController>/Ideascollections
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<Idea>> Get()
         {
          var ideas = await _ideaServices.GetIdeaCollections();
@@ -31,6 +35,9 @@ namespace BackendInnovationAPI.Controllers
 
         // Get api/<IdeasController>/5
         //[HttpGet("{id}")]
+        //  [ProducesResponseType(StatusCodes.Status200OK)]
+        // [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        // [ProducesResponseType(StatusCodes.Status404NotFound)]
         //public async Task<ActionResult<Idea>> Get(string id)
         //{
         //    var existingIdea = await _ideaServices.GetIdea(id);
@@ -46,7 +53,10 @@ namespace BackendInnovationAPI.Controllers
 
         //api/<IdeasController>/
         [HttpPost]
-       
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task< ActionResult<Idea>> Post([FromBody] Idea idea)
         {
             if (idea == null)
@@ -66,8 +76,11 @@ namespace BackendInnovationAPI.Controllers
         }
 
         // PUT api/<IdeasController>/5
-        [HttpPut("{id}")]
-      
+        [HttpPut("{id}",Name = "GetFeedbackById")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+
         public async Task<ActionResult<Idea>> Put(string id, [FromBody] Idea idea)
         {
 
@@ -91,6 +104,10 @@ namespace BackendInnovationAPI.Controllers
 
        // Get api/<IdeasController>/5
         [HttpGet("{MUId}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<Idea>> Get(string MUId)
         {
 
@@ -109,6 +126,10 @@ namespace BackendInnovationAPI.Controllers
         }
            
         [HttpGet("DisplayOnlyIdea")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task< ActionResult<Idea>> GetMapped()
         {
          

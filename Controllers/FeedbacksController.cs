@@ -1,6 +1,8 @@
 ﻿using BackendInnovationAPI.Models;
 using BackendInnovationAPI.Services.FeedbackServices;
 using Microsoft.AspNetCore.Mvc;
+using NPOI.SS.Formula.Functions;
+using NPOI.XSSF.Streaming.Values;
 
 namespace BackendInnovationAPI.Controllers
 {
@@ -16,7 +18,10 @@ namespace BackendInnovationAPI.Controllers
         }
 
         [HttpGet]
-
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<Feedback>> Get()
         {
             var feedback = await _feedbackServices.GetFeedback();
@@ -24,7 +29,10 @@ namespace BackendInnovationAPI.Controllers
 
         }
         [HttpPost]
-      
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
         public async Task<ActionResult<Feedback>> Post([FromBody] Feedback feedback)
         {
             if (!ModelState.IsValid)
@@ -41,10 +49,14 @@ namespace BackendInnovationAPI.Controllers
          return CreatedAtAction(nameof(Get), new { id = feedback.FeedbackId }, feedback);
                             
         }
-        
-          // get feedback by idea id
 
+        // get feedback by idea id
+       
         [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task< ActionResult<Feedback>> Get(string id)
         {
           var existingIdea = await _feedbackServices.GetFeedbackById(id);
@@ -61,7 +73,9 @@ namespace BackendInnovationAPI.Controllers
 
         // PUT api/<FeedbacksController>/id
         [HttpPut("{id}")]
-
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<Feedback>> Put(string id, [FromBody] Feedback feedback)
         {
 
@@ -88,6 +102,9 @@ namespace BackendInnovationAPI.Controllers
          // get feedback by idea id
 
        [HttpGet("{id}")]
+         [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
        public  ActionResult<Feedback> Get(string id)
        {
           var existingIdea = _feedbackServices.GetFeedbacksByIdeaID(id);
