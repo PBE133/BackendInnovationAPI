@@ -1,13 +1,12 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
-using MongoDB.Bson;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace BackendInnovationAPI.DTO
 {
     public class IdeaDTO
     {
-        [BsonId]
-        [BsonRepresentation(BsonType.ObjectId)]
-        public string IdeaId { get; set; }
+        [BsonElement("muid")]
+        public string MuId { get; set; }
 
         [BsonElement("ideaName")]
         public string? IdeaName { get; set; }
@@ -15,10 +14,5 @@ namespace BackendInnovationAPI.DTO
         [BsonElement("description")]
         public string? Description { get; set; }
 
-        [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
-        public DateTime CreatedAt { get; set; }
-
-        [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
-        public DateTime UpdatedAt { get; set; }
     }
 }

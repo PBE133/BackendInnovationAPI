@@ -1,11 +1,19 @@
 {
   "Version": 1,
-  "Hash": "Xx0cuzFADfCGsuSzX+fHN1vfUIXzKvf6d6qEaIVwtmM=",
+  "Hash": "YGXJ9IYQTozYeCoDoKOpq2OC+7cxATeHfBBAvPdyBhk=",
   "Source": "BackendInnovationAPI",
   "BasePath": "_content/BackendInnovationAPI",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
+  "DiscoveryPatterns": [
+    {
+      "Name": "BackendInnovationAPI\\wwwroot",
+      "Source": "BackendInnovationAPI",
+      "ContentRoot": "C:\\Users\\PBE133\\source\\repos\\BackendInnovationAPI\\wwwroot\\",
+      "BasePath": "_content/BackendInnovationAPI",
+      "Pattern": "**"
+    }
+  ],
   "Assets": []
 }

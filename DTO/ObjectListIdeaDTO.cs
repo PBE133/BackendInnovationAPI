@@ -1,10 +1,10 @@
 ﻿using BackendInnovationAPI.Models;
-using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace BackendInnovationAPI.DTO
 {
-    public class ObjectListIdeaDTO
+    public class ListOfSegementsIdsDTO
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
@@ -25,14 +25,14 @@ namespace BackendInnovationAPI.DTO
         [BsonElement("Ideator")]
         public Ideator Ideator { get; set; }
 
-        [BsonElement("Segment")]
-        public Segment Segments { get; set; }
+        [BsonElement("Feedback_name")]
+        public string Feedback { get; set; }
 
-        public List<string> FeedbackIds { get; set; }
+        public List<string> SegmentsIds { get; set; }
 
         public string? PortfolioName { get; set; }
-     
+
 
     }
-    
+
 }

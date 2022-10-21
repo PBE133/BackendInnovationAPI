@@ -1,22 +1,21 @@
 ﻿
-using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Bson;
-using BackendInnovationAPI.DTO;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace BackendInnovationAPI.Models
 {
     public class Segment
     {
 
-      //  [JsonIgnore]
+        //  [JsonIgnore]
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string SegmentId { get; set; }
 
         [BsonElement("segmentName")]
-        public List<string> SegmentName { get; set; }
+        public string SegmentName { get; set; }
 
-      //  public double Value { get; set; }
+        public double Value { get; set; }
 
         public Segment()
         {

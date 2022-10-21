@@ -1,7 +1,7 @@
 ﻿using BackendInnovationAPI.Models;
 using BackendInnovationAPI.Services.PortfolioServices;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Org.BouncyCastle.Crypto;
 
 namespace BackendInnovationAPI.Controllers
 {
@@ -18,7 +18,7 @@ namespace BackendInnovationAPI.Controllers
             this._portfolioService = portfolio;
         }
 
-       
+
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -26,8 +26,8 @@ namespace BackendInnovationAPI.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<Portfolio>> Get()
         {
-           var portfolioList = await _portfolioService.GetPortfolio(); 
-            return Ok(portfolioList);   
+            var portfolioList = await _portfolioService.GetPortfolio();
+            return Ok(portfolioList);
         }
 
         [HttpGet("{id}")]
@@ -54,10 +54,13 @@ namespace BackendInnovationAPI.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        public async Task<ActionResult<Portfolio>>Post(Portfolio portfolio)
+        public async Task<ActionResult<Portfolio>> Post(Portfolio portfolio)
         {
-           await _portfolioService.PostPortfolio(portfolio);
+            if (portfolio == null)
+            {
+                return BadRequest();
+            }
+            await _portfolioService.PostPortfolio(portfolio);
             return portfolio;
         }
     }

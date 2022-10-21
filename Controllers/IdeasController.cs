@@ -1,4 +1,5 @@
-﻿using BackendInnovationAPI.Models;
+﻿using BackendInnovationAPI.DTO;
+using BackendInnovationAPI.Models;
 using BackendInnovationAPI.Services.IdeaServices;
 using Microsoft.AspNetCore.Mvc;
 
@@ -12,9 +13,9 @@ namespace BackendInnovationAPI.Controllers
         //Create an object for IServicesIdea Interface
         private readonly IServiceIdeas _ideaServices;
 
-        public IdeasController( IServiceIdeas ideaServices)
+        public IdeasController(IServiceIdeas ideaServices)
         {
-                this._ideaServices = ideaServices;  
+            this._ideaServices = ideaServices;
         }
 
 
@@ -26,29 +27,10 @@ namespace BackendInnovationAPI.Controllers
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<ActionResult<Idea>> Get()
         {
-         var ideas = await _ideaServices.GetIdeaCollections();
-         return Ok(ideas);
- 
+            var ideas = await _ideaServices.GetIdeaCollections();
+            return Ok(ideas);
+
         }
-
-
-
-        // Get api/<IdeasController>/5
-        //[HttpGet("{id}")]
-        //  [ProducesResponseType(StatusCodes.Status200OK)]
-        // [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        // [ProducesResponseType(StatusCodes.Status404NotFound)]
-        //public async Task<ActionResult<Idea>> Get(string id)
-        //{
-        //    var existingIdea = await _ideaServices.GetIdea(id);
-
-        //    if (existingIdea == null)
-        //    {
-        //        return NotFound($"Idea with Id = {id} not found");
-        //    }
-
-        //  return Ok(existingIdea);
-        //}
 
 
         //api/<IdeasController>/
@@ -56,8 +38,7 @@ namespace BackendInnovationAPI.Controllers
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
-        public async Task< ActionResult<Idea>> Post([FromBody] Idea idea)
+        public async Task<ActionResult> Post([FromBody] Idea idea)
         {
             if (idea == null)
             {
@@ -68,15 +49,16 @@ namespace BackendInnovationAPI.Controllers
             {
                 return BadRequest(ModelState);
             }
-         await _ideaServices.CreateIdeaCollection(idea);
+            await _ideaServices.CreateIdeaCollection(idea);
+           
 
-         return CreatedAtAction(nameof(Get), new { id = idea.IdeaId }, idea);
+            return CreatedAtAction(nameof(Get), new { id = idea.IdeaId }, idea);
 
-            
+
         }
 
         // PUT api/<IdeasController>/5
-        [HttpPut("{id}",Name = "GetFeedbackById")]
+        [HttpPut("{id}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -86,23 +68,23 @@ namespace BackendInnovationAPI.Controllers
 
             if (!ModelState.IsValid)
             {
-                   return BadRequest(ModelState);
+                return BadRequest(ModelState);
             }
 
-         var existingIdea = await _ideaServices.GetIdea(id);
-         await _ideaServices.Update(id, idea);
+            var existingIdea = await _ideaServices.GetIdea(id);
+            await _ideaServices.Update(id, idea);
 
-                    //return NoContent();
-                    return Ok($"Idea with Id = {id} Updated");
+            //return NoContent();
+            return Ok($"Idea with Id = {id} Updated");
             if (existingIdea == null)
             {
-              return NotFound($"Idea with Id = {id} not found");
+                return NotFound($"Idea with Id = {id} not found");
             }
 
         }
 
 
-       // Get api/<IdeasController>/5
+        // Get api/<IdeasController>/5
         [HttpGet("{MUId}")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -113,52 +95,29 @@ namespace BackendInnovationAPI.Controllers
 
             if (!ModelState.IsValid)
             {
-               return BadRequest(ModelState);
+                return BadRequest(ModelState);
             }
-         var existingIdea = await _ideaServices.GetIdeasByIdeatorMUID(MUId);
+            var existingIdea = await _ideaServices.GetIdeasByIdeatorMUID(MUId);
 
             if (existingIdea == null)
             {
                 return NotFound($"Idea with Id = {MUId} not found");
             }
 
-        return Ok(existingIdea);
+            return Ok(existingIdea);
         }
-           
-        [HttpGet("DisplayOnlyIdea")]
+
+        [HttpGet("IdeasWithMuId")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public async Task< ActionResult<Idea>> GetMapped()
+        public async Task<ActionResult<Idea>> GetMapped()
         {
-         
-                var ideas = await _ideaServices.FetchAndMapIdeas();
-                return Ok(ideas);
+
+            var ideas = await _ideaServices.FetchAndMapIdeas();
+            return Ok(ideas);
         }
-          
-
-
-        /*  // DELETE api/<IdeasController>/5
-                  [HttpDelete("{id}")]
-                  public ActionResult Delete(string id)
-                  {
-                      var idea = _ideaServices.GetIdea(id);
-
-                      if (student == null)
-                      {
-                          return NotFound($"idea with Id = {id} not found");
-                      }
-
-                      _ideaServices.Remove(student.Id);
-
-                      return Ok($"Idea with Id = {id} deleted");
-      }*/
-
-
-        // Patch method
-
-
 
     }
 }
