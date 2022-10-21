@@ -26,7 +26,7 @@ namespace BackendInnovationAPI.DTO
         public Ideator Ideator { get; set; }
 
         [BsonElement("Feedback_name")]
-        public string Feedback { get; set; }
+        public int Feedback_value { get; set; }
 
         public List<string> SegmentsIds { get; set; }
 

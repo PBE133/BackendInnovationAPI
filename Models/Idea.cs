@@ -29,8 +29,8 @@ namespace BackendInnovationAPI.Models
         [BsonElement("Ideator")]
         public Ideator Ideator { get; set; }
 
-        [BsonElement("Feedback_Name")]
-        public string Feedback { get; set; }
+        [BsonElement("Feedback_value")]
+        public int FeedBack_value { get; set; }
 
         
         [BsonElement("SegmentIds")]
@@ -49,4 +49,5 @@ namespace BackendInnovationAPI.Models
             IdeaId = ObjectId.GenerateNewId().ToString();
         }
     }
+
 }

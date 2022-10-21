@@ -36,7 +36,7 @@ namespace BackendInnovationAPI.Services.IdeaServices
                 CreatedAt = _.CreatedAt,
                 UpdatedAt = _.UpdatedAt,
                 Ideator = _.Ideator,
-                Feedback = _.Feedback,               
+                Feedback_value = _.FeedBack_value,               
                 SegmentsIds = _.Segment.Select(x => x.SegmentId).ToList(),
                 PortfolioName = _.Portfolio?.PortfolioName
             });
@@ -75,7 +75,6 @@ namespace BackendInnovationAPI.Services.IdeaServices
   
         public async Task<Idea> CreateIdeaCollection(Idea idea)
         {
-
             await _ideas.InsertOneAsync(idea);
             return idea;
 
